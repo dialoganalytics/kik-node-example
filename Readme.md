@@ -1,6 +1,6 @@
 # Kik Node.js Bot
 
-An example kik node.js bot. Built with [kik-node](https://github.com/kikinteractive/kik-node).
+An example kik node.js bot with [Dialog Analaytics](https://dialoganalytics.com) integration. Built with [kik-node](https://github.com/kikinteractive/kik-node).
 
 
 ## Getting started
