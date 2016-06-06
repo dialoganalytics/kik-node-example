@@ -4,6 +4,7 @@ function unixTimestamp() {
   return new Date().getTime();
 }
 
+// Example interface to facilitate sending messages to the Dialog API.
 let Dialog = {
   track: function(message) {
     let endpoint = 'https://api.dialoganalytics.com/v1/messages?token=' + process.env.DIALOG_TOKEN;

@@ -4,6 +4,7 @@ let util = require('util');
 let http = require('http');
 let Bot  = require('@kikinteractive/kik');
 
+// Example interface to facilitate sending messages to the Dialog API.
 let Dialog = require('./dialog');
 
 // Configure the bot API endpoint, details for your bot
