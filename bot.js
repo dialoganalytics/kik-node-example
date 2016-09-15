@@ -9,9 +9,9 @@ let Dialog = require('./dialog');
 
 // Configure the bot API endpoint, details for your bot
 let bot = new Bot({
-    username: 'frankiemusicbot',
-    apiKey: process.env.KIK_API_TOKEN,
-    baseUrl: process.env.BOT_HOST
+  username: 'frankiemusicbot',
+  apiKey: process.env.KIK_API_TOKEN,
+  baseUrl: process.env.BOT_HOST
 });
 
 bot.updateBotConfiguration();
