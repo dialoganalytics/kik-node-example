@@ -1,8 +1,5 @@
 let request = require('request');
 
-function unixTimestamp() {
-  return new Date().getTime();
-}
 
 // Example interface to facilitate sending messages to the Dialog API.
 let Dialog = {
