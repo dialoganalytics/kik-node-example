@@ -17,7 +17,7 @@ let bot = new Bot({
 bot.updateBotConfiguration();
 
 bot.onTextMessage((message) => {
-  Dialog.track(message);
+  Dialog.incoming(message);
 
   var response = message.reply(message.body);
 
@@ -25,7 +25,7 @@ bot.onTextMessage((message) => {
     requests.forEach((request) => {
       body = JSON.parse(request.body);
       body.messages.forEach((message) => {
-        Dialog.track(message);
+        Dialog.outgoing(message);
       });
     });
   });
