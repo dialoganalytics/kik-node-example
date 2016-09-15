@@ -19,7 +19,7 @@ bot.updateBotConfiguration();
 bot.onTextMessage((message) => {
   Dialog.incoming(message);
 
-  var response = message.reply(message.body);
+  var response = bot.send(["hey!"], message.from, message.chatId)
 
   response.then(function(requests) {
     requests.forEach((request) => {
