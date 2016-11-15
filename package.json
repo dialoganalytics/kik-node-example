@@ -1,17 +1,18 @@
 {
-  "name": "kik-js-bot",
+  "name": "kik-node-example",
   "version": "1.0.0",
-  "description": "",
+  "description": "An example Kik node.js chatbot integrated with Dialog Analytics",
   "main": "bot.js",
   "scripts": {
     "start": "node bot.js",
+    "debug": "node debug bot.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
-  "license": "ISC",
+  "author": "Dialog Analytics",
+  "license": "MIT",
   "dependencies": {
-    "@kikinteractive/kik": "^2.0.2",
-    "dotenv": "^2.0.0",
-    "request": "^2.72.0"
+    "@kikinteractive/kik": "^2.0.11",
+    "dialog-api": "0.0.3",
+    "dotenv": "^2.0.0"
   }
 }

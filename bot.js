@@ -4,12 +4,13 @@ let util = require('util');
 let http = require('http');
 let Bot  = require('@kikinteractive/kik');
 
-// Example interface to facilitate sending messages to the Dialog API.
-let Dialog = require('./dialog');
+let Dialog = require('dialog-api/lib/kik');
 
-// Configure the bot API endpoint, details for your bot
+var dialog = new Dialog(process.env.DIALOG_API_TOKEN, process.env.DIALOG_BOT_ID);
+
+// Configure the bot
 let bot = new Bot({
-  username: 'frankiemusicbot',
+  username: process.env.KIK_BOT_USERNAME,
   apiKey: process.env.KIK_API_TOKEN,
   baseUrl: process.env.BOT_HOST
 });
@@ -17,16 +18,20 @@ let bot = new Bot({
 bot.updateBotConfiguration();
 
 bot.onTextMessage((message) => {
-  Dialog.incoming(message);
+  dialog.incoming(message); // Track an incoming message
 
-  var response = bot.send(["hey!"], message.from, message.chatId)
+  var replies = ["Hey, ho!", "Let's go!"];
+  var response = bot.send(replies, message.from, message.chatId);
 
-  response.then(function(requests) {
-    requests.forEach((request) => {
-      body = JSON.parse(request.body);
-      body.messages.forEach((message) => {
-        Dialog.outgoing(message);
-      });
+  response.then(function() {
+    replies.forEach((text) => {
+      payload = {
+        type: 'text',
+        body: text,
+        chatId: message.chatId
+      };
+
+      console.log(dialog.outgoing(payload)); // Track outgoing message(s)
     });
   });
 });
