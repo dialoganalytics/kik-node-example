@@ -32,6 +32,14 @@ bot.onTextMessage((message) => {
   bot.send(replies, message.from, message.chatId);
 });
 
+bot.onPictureMessage((message) => {
+  bot.send(Bot.Message.picture('http://i.imgur.com/oalyVlU.jpg')
+    .setAttributionName('Imgur')
+    .setAttributionIcon('http://s.imgur.com/images/favicon-96x96.png'),
+    message.from,
+    message.chatId);  
+});
+
 // Set up your server and start listening
 let server = http
   .createServer(bot.incoming())
