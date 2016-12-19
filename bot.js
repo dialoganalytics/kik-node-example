@@ -17,23 +17,19 @@ let bot = new Bot({
 
 bot.updateBotConfiguration();
 
+// Track incoming messages
+bot.use((message, next) => {
+  dialog.incomingMiddleware(message, next);
+})
+
+// Track outgoing messages
+bot.outgoing((message, next) => {
+  dialog.outgoingMiddleware(message, next);
+});
+
 bot.onTextMessage((message) => {
-  dialog.incoming(message); // Track an incoming message
-
   var replies = ["Hey, ho!", "Let's go!"];
-  var response = bot.send(replies, message.from, message.chatId);
-
-  response.then(function() {
-    replies.forEach((text) => {
-      payload = {
-        type: 'text',
-        body: text,
-        chatId: message.chatId
-      };
-
-      console.log(dialog.outgoing(payload)); // Track outgoing message(s)
-    });
-  });
+  bot.send(replies, message.from, message.chatId);
 });
 
 // Set up your server and start listening
